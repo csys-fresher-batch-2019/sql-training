@@ -81,22 +81,15 @@ END PR_ORDER_BOOK_1;
 
 #### Test Procedure
 ```sql
-create or replace PROCEDURE PR_ORDER_BOOK_1
-(
-  I_BOOK_ID IN NUMBER 
-, I_QTY IN NUMBER 
-, I_USER_NAME IN VARCHAR2 
-, I_ERROR_MESSAGE OUT VARCHAR2
-) AS 
-V_BOOK_STOCK NUMBER;
+DECLARE
+v_user_id varchar2(50):= 'naresh';
+v_book_id number := 101;
+v_qty number := 50;
+v_error_message varchar2(100) ;
 BEGIN
-   V_BOOK_STOCK := FN_GET_BOOK_STOCK ( I_BOOK_ID);
-   IF V_BOOK_STOCK >= I_QTY THEN
-    INSERT INTO ORDERS( ORDER_ID, USERNAME, BOOK_ID, QUANTITY, STATUS)
-    VALUES ( ORDER_ID_SEQ.nextval, I_USER_NAME,I_BOOK_ID,I_QTY, 'ORDERED');    
-   ELSE
-   I_ERROR_MESSAGE := 'OUT_OF_STOCK';
-  END IF;
-  COMMIT;
-END PR_ORDER_BOOK_1;
+PR_ORDER_BOOK_1( v_book_id, v_qty, v_user_id, v_error_message);
+IF v_error_message IS NOT NULL THEN
+DBMS_OUTPUT.PUT_LINE( 'Error - ' || v_error_message ); 
+END IF;
+END;
 ```
