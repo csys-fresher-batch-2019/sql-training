@@ -49,3 +49,9 @@ BEGIN
   RETURN v_remaining_stock;
 END FN_GET_BOOK_STOCK;
 ```
+
+
+#### Test the function
+```sql
+SELECT FN_GET_BOOK_STOCK( 101) from dual;
+```
