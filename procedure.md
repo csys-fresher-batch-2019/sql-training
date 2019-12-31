@@ -43,3 +43,16 @@ BEGIN
   COMMIT;
 END PR_ORDER_BOOK;
 ```
+
+#### Test Procedure
+```sql
+DECLARE
+v_user_id varchar2(50):= 'naresh';
+v_book_id number := 101;
+v_qty number := 50;
+BEGIN
+PR_ORDER_BOOK( v_book_id, v_qty, v_user_id);
+END;
+
+select * from orders;
+```
