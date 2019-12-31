@@ -35,12 +35,12 @@ RETURN NUMBER AS
     v_ordered NUMBER;
 BEGIN
    -- step 1: GEt stock count
-   select quantity into v_stock from book_stock where book_id = i_book_id;
+   select quantity into v_stock from book_stock where book_id = I_BOOK_ID;
    DBMS_OUTPUT.put_line('Stock' || v_stock);
    
    --step 2: Get total books ordered
-   select sum(quantity) into v_ordered from orders where 
-   book_id = i.book_id and status IN( 'ORDERED', 'DELIVERED') ;
+   select NVL(sum(quantity),0) into v_ordered from orders where 
+   book_id = I_BOOK_ID and status IN( 'ORDERED', 'DELIVERED') ;
    DBMS_OUTPUT.put_line('Ordered Quantity' || v_ordered);
    
    --step 3: calculate remaining stock
