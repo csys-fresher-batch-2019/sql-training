@@ -22,3 +22,13 @@
 | 2        | srini     | 101     | 3        | DELIVERED |
 | 3        | prabhu    | 102     | 2        | ORDERED   |
 | 4        | siva      | 101     | 1        | CANCELLED |
+
+
+#### Table : ORDER_ITEMS
+
+| ITEM_ID | ORDER_ID | BOOK_ID | QUANTITY | STATUS    |
+|---------|----------|---------|----------|-----------|
+| 1       | 1        | 101     | 5        | ORDERED   |
+| 2       | 1        | 101     | 3        | DELIVERED |
+| 3       | 2        | 102     | 2        | ORDERED   |
+| 4       | 3        | 101     | 1        | CANCELLED |
